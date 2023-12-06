@@ -21,7 +21,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "trau-sut-handmade",
+            "prefix": "tsh",
             "style": "kebab-case"
           }
         ]
