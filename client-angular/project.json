@@ -2,7 +2,7 @@
   "name": "client-angular",
   "$schema": "../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "prefix": "trau-sut-handmade",
+  "prefix": "tsh",
   "sourceRoot": "client-angular/src",
   "tags": [],
   "targets": {
