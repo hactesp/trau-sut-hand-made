@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -7,5 +7,8 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
   templateUrl: './nav-sm.component.html',
   styleUrl: './nav-sm.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NavSmComponent {}
+export class NavSmComponent {
+  @Input() expandMenu: boolean = false;
+}
