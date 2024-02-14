@@ -1,5 +1,6 @@
 const { createGlobPatternsForDependencies } = require('@nx/angular/tailwind');
 const { join } = require('path');
+const defaultTheme = require('tailwindcss/defaultTheme');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -8,9 +9,16 @@ module.exports = {
     ...createGlobPatternsForDependencies(__dirname),
   ],
   theme: {
-    extend: {},
+    colors: {
+      white: 'white',
+      black: 'black',
+      primary: '#426D49',
+    },
+    extend: {
+      fontFamily: {
+        pecita: ['"Pecita"', ...defaultTheme.fontFamily.sans],
+      },
+    },
   },
-  plugins: [
-    require('@tailwindcss/aspect-ratio')
-  ],
+  plugins: [require('@tailwindcss/aspect-ratio')],
 };

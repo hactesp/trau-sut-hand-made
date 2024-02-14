@@ -1,0 +1,76 @@
+{
+  "name": "exam-booking",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "exam-booking/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/exam-booking",
+        "index": "exam-booking/src/index.html",
+        "baseHref": "/",
+        "main": "exam-booking/src/main.tsx",
+        "tsConfig": "exam-booking/tsconfig.app.json",
+        "assets": ["exam-booking/src/favicon.ico", "exam-booking/src/assets"],
+        "styles": ["exam-booking/src/styles.scss"],
+        "scripts": [],
+        "webpackConfig": "exam-booking/webpack.config.js"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "exam-booking/src/environments/environment.ts",
+              "with": "exam-booking/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/webpack:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "exam-booking:build",
+        "hmr": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "exam-booking:build:development"
+        },
+        "production": {
+          "buildTarget": "exam-booking:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "exam-booking/jest.config.ts"
+      }
+    }
+  },
+  "tags": []
+}
